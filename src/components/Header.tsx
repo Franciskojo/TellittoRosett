@@ -344,25 +344,39 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-pink-100/80 shadow-sm transition-all">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-pink-600 via-rose-500 to-pink-700 text-white text-xs py-1.5 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="bg-white/20 px-2 py-0.5 rounded-full font-medium text-[11px] flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-pink-200" />
-              {isAuthenticated ? (
-                <span>{isStaff ? 'Staff' : 'Patient'} Portal</span>
-              ) : (
-                <span>Welcome</span>
-              )}
-            </span>
-            <span className="hidden sm:inline text-pink-100">
-              Trusted Midwife & Maternal Health Advocate • Accra, Ghana
-            </span>
+      <div className="bg-gradient-to-r from-pink-600 via-rose-500 to-pink-700 text-white text-xs py-1.5 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          {/* Moving Marquee Ticker */}
+          <div className="relative flex-1 overflow-hidden select-none">
+            {/* Subtle edge fade masks */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-pink-600 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-pink-700 to-transparent z-10" />
+
+            <div className="animate-marquee py-0.5">
+              {[0, 1, 2, 3].map((idx) => (
+                <div key={idx} className="flex items-center space-x-3 mx-6 shrink-0">
+                  <span className="bg-white/20 px-2.5 py-0.5 rounded-full font-medium text-[11px] flex items-center gap-1 shadow-sm">
+                    <Sparkles className="w-3 h-3 text-pink-200" />
+                    <span>
+                      {isAuthenticated ? (
+                        <span>{isStaff ? 'Staff' : 'Patient'} Portal</span>
+                      ) : (
+                        <span>Welcome</span>
+                      )}
+                    </span>
+                  </span>
+                  <span className="text-pink-50 font-medium">
+                    Trusted Midwife & Maternal Health Advocate • Accra, Ghana
+                  </span>
+                  <span className="text-pink-200/80 text-xs ml-3">✦</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Portal Quick Switch (only visible when authenticated) */}
           {isAuthenticated && (
-            <div className="relative">
+            <div className="relative shrink-0">
               <button
                 onClick={() => setPortalDropdownOpen(!portalDropdownOpen)}
                 className="flex items-center gap-1.5 bg-white text-pink-700 hover:bg-pink-50 font-semibold px-2.5 py-0.5 rounded-full shadow-sm text-xs transition"
