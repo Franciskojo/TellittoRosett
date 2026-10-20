@@ -9,7 +9,7 @@ import {
   PlusCircle, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, LogOut, Activity, Heart,
   AlertCircle, Phone, ShieldCheck, Baby, Sparkles, Download, ExternalLink,
   Search, Filter, Check, X, Printer, Receipt, Stethoscope, CalendarPlus,
-  Compass, ChevronDown, ChevronUp
+  Compass, ChevronDown, ChevronUp, Globe
 } from 'lucide-react';
 
 interface PatientDashboardProps {
@@ -18,6 +18,7 @@ interface PatientDashboardProps {
   onNavigate: (view: ActiveView, serviceId?: string) => void;
   onViewAppointmentDetails: (apt: Appointment) => void;
   onReadArticle: (art: Article) => void;
+  onLogout?: () => void;
 }
 
 type TabKey = 'overview' | 'appointments' | 'billing' | 'care-team';
@@ -29,6 +30,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
   onNavigate,
   onViewAppointmentDetails,
   onReadArticle,
+  onLogout,
 }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('overview');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('ALL');
@@ -262,6 +264,17 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
                 </span>
               </div>
 
+              {/* Patient Profile Badge */}
+              <div className="p-3 bg-gradient-to-r from-pink-50 to-rose-50/60 rounded-2xl border border-pink-100 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center text-white text-sm font-bold shadow-xs shrink-0">
+                  {userName ? userName.charAt(0).toUpperCase() : 'P'}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-bold text-slate-900 truncate">{userName}</p>
+                  <p className="text-[11px] text-brand-600 font-semibold truncate">{userEmail || 'Patient Account'}</p>
+                </div>
+              </div>
+
               {/* Navigation Menu Groups */}
               <div className="space-y-4">
                 
@@ -391,14 +404,29 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
 
               </div>
 
-              {/* Portal Utilities & Exit */}
-              <div className="pt-3 border-t border-slate-100 space-y-2">
+              {/* Workspace Actions: View Website & Sign Out */}
+              <div className="pt-3 border-t border-slate-100 space-y-1.5">
                 <button
                   onClick={() => onNavigate('home')}
-                  className="w-full flex items-center gap-2.5 text-xs text-slate-500 hover:text-brand-600 px-3 py-2 rounded-xl hover:bg-pink-50/50 font-medium transition"
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-brand-600 hover:bg-pink-50 transition cursor-pointer group"
+                  title="Return to the public marketing site"
                 >
-                  <LogOut className="w-4 h-4" />
-                  <span>Exit to Clinic Website</span>
+                  <div className="flex items-center gap-2.5">
+                    <Globe className="w-4 h-4 text-slate-400 group-hover:text-brand-600" />
+                    <span>View Public Website</span>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-brand-600" />
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileSidebarOpen(false);
+                    onLogout?.();
+                  }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition cursor-pointer"
+                >
+                  <LogOut className="w-4 h-4 text-rose-500" />
+                  <span>Sign Out</span>
                 </button>
               </div>
 

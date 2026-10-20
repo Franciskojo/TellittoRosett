@@ -63,6 +63,7 @@ const NO_HEADER_VIEWS: ActiveView[] = [
   'staff-dashboard',
   'staff-management',
   'blog-admin',
+  'patient-dashboard',
 ];
 
 export default function Home() {
@@ -402,6 +403,7 @@ export default function Home() {
               onNavigate={handleNavigate}
               onViewAppointmentDetails={(apt) => setSelectedAppointment(apt)}
               onReadArticle={(art) => setSelectedArticle(art)}
+              onLogout={handleLogout}
             />
           ) : (
             <div className="min-h-[70vh] flex flex-col items-center justify-center gap-3">
