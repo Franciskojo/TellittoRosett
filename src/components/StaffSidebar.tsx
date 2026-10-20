@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Session } from 'next-auth';
 import { ActiveView } from '@/types';
 import { 
@@ -141,9 +142,11 @@ export const StaffSidebar: React.FC<StaffSidebarProps> = ({
 
           {/* Lead Midwife Profile Card */}
           <div className="flex items-center gap-3 p-3 bg-pink-50/50 rounded-2xl border border-pink-100/60">
-            <img
+            <Image
               src="/images/rosetta.jpg"
               alt="Staff Lead"
+              width={44}
+              height={44}
               className="w-11 h-11 rounded-xl object-cover border border-pink-200 shadow-xs"
             />
             <div className="min-w-0 flex-1">

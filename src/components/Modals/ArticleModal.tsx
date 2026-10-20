@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Article } from '@/types';
 import { X, Calendar, Clock, User, Bookmark, Share2 } from 'lucide-react';
 
@@ -17,10 +18,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
       <div className="bg-white max-w-3xl w-full rounded-2xl shadow-2xl overflow-hidden my-8 relative border border-pink-100 flex flex-col max-h-[90vh]">
         {/* Header Image */}
         <div className="relative h-64 sm:h-72 w-full shrink-0">
-          <img
+          <Image
             src={article.coverImage}
             alt={article.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
           
@@ -79,9 +81,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
           </div>
 
           <div className="mt-8 p-5 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-100 flex items-center gap-4">
-            <img
+            <Image
               src="/images/rosetta.jpg"
               alt="Rosetta"
+              width={56}
+              height={56}
               className="w-14 h-14 rounded-full object-cover border-2 border-pink-400 shrink-0"
             />
             <div>

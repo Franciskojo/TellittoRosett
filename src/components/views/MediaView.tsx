@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { MediaItem } from '@/types';
 import { INITIAL_MEDIA } from '@/lib/initialData';
 import { Play, Tv, Radio, Mic, Calendar, Clock, ExternalLink } from 'lucide-react';
@@ -86,9 +87,11 @@ export const MediaView: React.FC<MediaViewProps> = ({ onPlayVideo }) => {
             >
               {/* Thumbnail Container with Play Overlay */}
               <div className="relative aspect-video bg-slate-900 overflow-hidden">
-                <img
+                <Image
                   src={item.thumbnail}
                   alt={item.title}
+                  width={640}
+                  height={360}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>

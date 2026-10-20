@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { ActiveView, Article } from '@/types';
 import { Search, Calendar, Clock, User, ArrowRight, BookOpen, ChevronRight } from 'lucide-react';
 
@@ -96,9 +97,11 @@ export const BlogPublic: React.FC<BlogPublicProps> = ({
               <div>
                 {/* Cover Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-pink-100">
-                  <img
+                  <Image
                     src={article.coverImage}
                     alt={article.title}
+                    width={600}
+                    height={375}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-pink-600/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">

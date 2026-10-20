@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { MediaItem } from '@/types';
 import { X, Play, Tv, Calendar, Clock, Share2 } from 'lucide-react';
 
@@ -25,9 +26,11 @@ export const VideoModal: React.FC<VideoModalProps> = ({ item, onClose }) => {
 
         {/* Video Player Mockup / Stream */}
         <div className="relative aspect-video bg-black flex items-center justify-center group overflow-hidden">
-          <img
+          <Image
             src={item.thumbnail}
             alt={item.title}
+            width={640}
+            height={360}
             className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>

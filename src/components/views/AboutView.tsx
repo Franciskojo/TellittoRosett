@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { ActiveView } from '@/types';
 import { Award, Tv, Heart, Users, Quote, CheckCircle, ArrowRight, ShieldCheck, Stethoscope } from 'lucide-react';
 
@@ -21,9 +22,11 @@ export const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full max-w-sm">
                 <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-pink-100 aspect-[4/5]">
-                  <img
+                  <Image
                     src="/images/rosetta.jpg"
                     alt="About Midwife Rosetta"
+                    width={400}
+                    height={500}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>

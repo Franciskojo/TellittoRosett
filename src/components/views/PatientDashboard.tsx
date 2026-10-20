@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { Session } from 'next-auth';
 import { ActiveView, Appointment, Article } from '@/types';
 import { 
@@ -1113,13 +1114,11 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                    <img 
+                    <Image 
                       src="/images/rosetta.jpg"
                       alt="Midwife Rosetta N. Boakye"
-                      onError={(e) => {
-                        // Fallback avatar if local image not found
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80';
-                      }}
+                      width={112}
+                      height={112}
                       className="w-28 h-28 rounded-3xl object-cover border-4 border-pink-100 shadow-md shrink-0"
                     />
                     

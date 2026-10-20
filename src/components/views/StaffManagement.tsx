@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { ActiveView, StaffMember, Appointment } from '@/types';
 import { StaffSidebar } from '@/components/StaffSidebar';
 import { 
@@ -100,9 +101,11 @@ export const StaffManagement: React.FC<StaffManagementProps> = ({
                   <div>
                     {/* Avatar Container */}
                     <div className="relative w-20 h-20 mx-auto rounded-2xl overflow-hidden border-2 border-pink-100 shadow-sm mb-3">
-                      <img
+                      <Image
                         src={staff.avatar}
                         alt={staff.name}
+                        width={80}
+                        height={80}
                         className="w-full h-full object-cover"
                       />
                     </div>

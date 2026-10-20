@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { ActiveView } from '@/types';
 import { Calendar, Play, Users, Tv, Award, Heart, CheckCircle2, Star, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -100,9 +101,12 @@ export const HomepageView: React.FC<HomepageViewProps> = ({ onNavigate, onOpenVi
 
                 {/* Main Rosetta Portrait Image Container */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-pink-100/50 aspect-[4/4.8] group">
-                  <img
+                  <Image
                     src="/images/rosetta.jpg"
                     alt="Rosetta Ntriwaah Boakye - Midwife"
+                    width={600}
+                    height={720}
+                    priority
                     className="w-full h-full object-cover object-top group-hover:scale-102 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-pink-900/40 via-transparent to-transparent"></div>
